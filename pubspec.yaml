@@ -1,0 +1,48 @@
+name: laugh1
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.18.4 <3.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: ^4.6.5
+  sizer: ^2.0.15
+  lottie: ^2.0.0
+  shimmer: ^2.0.0
+  readmore: ^2.2.0
+  google_fonts: ^3.0.1
+  flutter_typeahead: ^4.1.1
+  connectivity_plus: ^2.3.4
+  shared_preferences: ^2.0.15
+  mocktail: ^0.3.0
+  flutter_native_splash: ^2.2.15
+  flutter_svg: ^1.1.6
+  introduction_screen: ^3.0.2
+  get_storage: ^2.0.3
+  pull_to_refresh: ^2.0.0
+  font_awesome_flutter: ^10.2.1
+  flutter_gifimage: ^1.0.1
+  flutter: 
+    sdk: flutter
+
+dev_dependencies: 
+  flutter_lints: ^2.0.0
+  lints: 2.0.1
+  flutter_test: 
+    sdk: flutter
+
+flutter_native_splash: 
+  image: assets/image/light_mode.png
+  color: "#42a5f5"
+  image_dark: assets/image/dark_mode.png
+  color_dark: '#000000'
+  
+flutter: 
+  assets: 
+    - assets/image/
+    - assets/icons/
+    - assets/lottie/
+  uses-material-design: true
+
