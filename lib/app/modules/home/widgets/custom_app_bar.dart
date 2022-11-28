@@ -27,10 +27,10 @@ class CustomAppBar extends StatelessWidget {
                     style: GoogleFonts.poppins(
                         fontWeight: FontWeight.bold, fontSize: 20.sp),
                   ),
-                  Avatar(
-                    image:
-                        "https://raw.githubusercontent.com/Rea2er/flutter-house-rent/main/assets/images/avatar.jpeg",
-                  )
+                  // Avatar(
+                  //   image:
+                  //       "https://raw.githubusercontent.com/Rea2er/flutter-house-rent/main/assets/images/avatar.jpeg",
+                  // )
                 ],
               ),
             ),

@@ -56,7 +56,7 @@ class _AvatarState extends State<Avatar>
               ]),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(1.6),
+          padding: const EdgeInsets.all(3),
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,
