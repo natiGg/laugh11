@@ -15,8 +15,8 @@ class HomeView extends GetView<HomeController> {
   List isSelected = [true, false, false, false];
   List items = [1, 2, 3, 2, 1];
 
-  // RefreshController _refreshController =
-  //     RefreshController(initialRefresh: false);
+  RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
   // bool _show = false;
   // RxBool _isRefreshed = false.obs;
 
@@ -43,17 +43,24 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Scaffold(
-          body: ListView(children: [
-        CustomAppBar(),
-        ...items.map(((e) => Post(
-              image:
-                  "https://raw.githubusercontent.com/Rea2er/flutter-house-rent/main/assets/images/offer0${e}.jpeg",
-              caption:
-                  "'This official website features a ribbed knit zipper jacket that is modern and stylish. It looks very temparament and is recommended to friends',",
-              level: "Pro",
-            )))
-      ])),
+      body: SmartRefresher(
+        onLoading: (() {}),
+        header: WaterDropHeader(),
+        onRefresh: (() {}),
+        enablePullDown: true,
+        enablePullUp: true,
+        child: Scaffold(
+            body: ListView(children: [
+          CustomAppBar(),
+          ...items.map(((e) => Post(
+                image:
+                    "https://raw.githubusercontent.com/Rea2er/flutter-house-rent/main/assets/images/offer0${e}.jpeg",
+                caption:
+                    "'This official website features a ribbed knit zipper jacket that is modern and stylish. It looks very temparament and is recommended to friends',",
+                level: "Pro",
+              )))
+        ])),
+      ),
       bottomNavigationBar: BottomNav(),
     );
   }
