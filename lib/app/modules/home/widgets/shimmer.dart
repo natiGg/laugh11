@@ -5,6 +5,7 @@ import 'package:laugh1/app/modules/home/controllers/home_controller.dart';
 
 import 'package:readmore/readmore.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:sizer/sizer.dart';
 import 'content.dart';
 
 class ShimerPost extends GetView<HomeController> {
@@ -18,7 +19,7 @@ class ShimerPost extends GetView<HomeController> {
         borderRadius: BorderRadius.circular(15.0),
         elevation: 3.0,
         child: Container(
-          height: 450,
+          height: 70.h,
           decoration: BoxDecoration(
               color: Get.isDarkMode
                   ? Theme.of(context).colorScheme.secondary
@@ -45,8 +46,8 @@ class ShimerPost extends GetView<HomeController> {
                                 width: 5,
                               ),
                               Container(
-                                  width: 100.0,
-                                  height: 8.0,
+                                  width: 20.0.h,
+                                  height: 4.0.h,
                                   decoration: BoxDecoration(
                                       color: Get.isDarkMode
                                           ? Theme.of(context)

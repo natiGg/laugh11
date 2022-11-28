@@ -16,7 +16,7 @@ class Reaction extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Image.asset(
-                      "assets/image/laughing.gif",
+                      "assets/image/laughing2.gif",
                       height: 30,
                       width: 30,
                       fit: BoxFit.cover,

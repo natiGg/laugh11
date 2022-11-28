@@ -24,6 +24,8 @@ dependencies:
   pull_to_refresh: ^2.0.0
   font_awesome_flutter: ^10.2.1
   flutter_gifimage: ^1.0.1
+  cached_network_image: ^3.2.3
+
   flutter: 
     sdk: flutter
 
@@ -38,7 +40,7 @@ flutter_native_splash:
   color: "#42a5f5"
   image_dark: assets/image/dark_mode.png
   color_dark: '#000000'
-  
+
 flutter: 
   assets: 
     - assets/image/
