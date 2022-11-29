@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 import 'package:laugh1/app/modules/home/widgets/bottom_navigation.dart';
 import 'package:laugh1/app/modules/home/widgets/shimmer.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../../themes/theme_controller.dart';
 import '../controllers/home_controller.dart';
@@ -14,6 +17,8 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 class HomeView extends GetView<HomeController> {
   List isSelected = [true, false, false, false];
   List items = [1, 2, 3, 2, 7, 4, 2, 0];
+  late PersistentTabController _tabcontroller =
+      PersistentTabController(initialIndex: 0);
 
   // RefreshController _refreshController =
   //     RefreshController(initialRefresh: false);
@@ -41,10 +46,56 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    return PersistentTabView(
+      context,
+      controller: _tabcontroller,
+      screens: _buildScreens(items),
+      items: _navBarsItems(),
+      confineInSafeArea: true,
+      backgroundColor:
+          Theme.of(context).colorScheme.secondary, // Default is Colors.white.
+      handleAndroidBackButtonPress: true, // Default is true.
+      resizeToAvoidBottomInset:
+          true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
+      stateManagement: true, // Default is true.
+      hideNavigationBarWhenKeyboardShows:
+          true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+      decoration: NavBarDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        colorBehindNavBar: Theme.of(context).colorScheme.secondary,
+      ),
+      popAllScreensOnTapOfSelectedTab: true,
+      popActionScreens: PopActionScreensType.all,
+      itemAnimationProperties: ItemAnimationProperties(
+        // Navigation Bar's items animation properties.
+        duration: Duration(milliseconds: 200),
+        curve: Curves.ease,
+      ),
+      screenTransitionAnimation: ScreenTransitionAnimation(
+        // Screen transition animation on change of selected tab.
+        animateTabTransition: true,
+        curve: Curves.ease,
+        duration: Duration(milliseconds: 200),
+      ),
+      navBarStyle: NavBarStyle
+          .neumorphic, // Choose the nav bar style with this property.
+    );
+    ;
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({
+    Key? key,
+    required this.items,
+  }) : super(key: key);
+
+  final List items;
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Scaffold(
-          body: ListView(children: [
+      body: ListView(children: [
         CustomAppBar(),
         ...items.map(((e) => Post(
               image: e <= 3
@@ -56,8 +107,44 @@ class HomeView extends GetView<HomeController> {
                   "'This official website features a ribbed knit zipper jacket that is modern and stylish. It looks very temparament and is recommended to friends',",
               level: e > 1 ? "#Pro" : "#Comedian",
             )))
-      ])),
-      bottomNavigationBar: BottomNav(),
+      ]),
     );
   }
+}
+
+List<Widget> _buildScreens(List items) {
+  return [
+    HomeScreen(
+      items: items,
+    ),
+    HomeScreen(
+      items: items,
+    ),
+    HomeScreen(
+      items: items,
+    ),
+  ];
+}
+
+List<PersistentBottomNavBarItem> _navBarsItems() {
+  return [
+    PersistentBottomNavBarItem(
+      icon: Icon(FontAwesomeIcons.smile),
+      title: ("Home"),
+      activeColorPrimary: Colors.amber,
+      inactiveColorPrimary: CupertinoColors.systemGrey,
+    ),
+    PersistentBottomNavBarItem(
+      icon: Icon(FontAwesomeIcons.home),
+      title: ("Settings"),
+      activeColorPrimary: Colors.amber,
+      inactiveColorPrimary: CupertinoColors.systemGrey,
+    ),
+    PersistentBottomNavBarItem(
+      icon: Icon(CupertinoIcons.profile_circled),
+      title: ("Settings"),
+      activeColorPrimary: Colors.amber,
+      inactiveColorPrimary: CupertinoColors.systemGrey,
+    ),
+  ];
 }

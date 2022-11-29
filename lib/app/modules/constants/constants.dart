@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 final defHeight = MediaQuery.of(Get.context!).size.height;
 final defWidth = MediaQuery.of(Get.context!).size.height;
@@ -14,6 +15,10 @@ const kBlueColor = Color(0xFF6E8AFA);
 const kBestSellerColor = Color(0xFFFFD073);
 const kGreenColors = Color(0xFF49CC96);
 
+late final defFont = GoogleFonts.poppins(
+  fontSize: 5.0.sp,
+  fontWeight: FontWeight.normal,
+);
 // My Text Styles
 const kHeadingextStyle = TextStyle(
   fontSize: 28,
