@@ -8,6 +8,7 @@ import 'package:laugh1/app/modules/home/widgets/shimmer.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../../themes/theme_controller.dart';
+import '../../profile/views/profile_view.dart';
 import '../controllers/home_controller.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/gif_header.dart';
@@ -120,9 +121,7 @@ List<Widget> _buildScreens(List items) {
     HomeScreen(
       items: items,
     ),
-    HomeScreen(
-      items: items,
-    ),
+    ProfileView(),
   ];
 }
 
