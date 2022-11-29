@@ -55,7 +55,9 @@ const kSubtitleTextSyule = TextStyle(
 
 const double DefaultPadding = 20.0;
 const defBlackColor = Color(0xFF101010);
-
+const neumorph = Color(0xFFE7ECEF);
+Offset offset = Offset(28, 28);
+double blur = 30.0;
 const kSecondaryColor = Color(0xFF8B94BC);
 const kGreenColor = Color(0xFF49CC96);
 const kRedColor = Color(0xFFE92E30);

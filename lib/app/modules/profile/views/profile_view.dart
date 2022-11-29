@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:laugh1/app/modules/constants/constants.dart';
+import 'package:sizer/sizer.dart';
 
 import '../controllers/profile_controller.dart';
 
@@ -16,213 +19,277 @@ class ProfileView extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
+    return Column(children: [
+      Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 35.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Opacity(
+            opacity: 0.05,
+            child: Container(
+              child: Image.asset(
+                "assets/image/laugh_bg.jpg",
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Container(
+            child: Column(
               children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.arrow_back_ios,
-                    size: 30.0,
+                Padding(
+                  padding:
+                      const EdgeInsets.only(left: 15.0, right: 15.0, top: 35.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.arrow_back_ios,
+                            size: 20.0,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        "Jenny Wilson",
+                        style: GoogleFonts.poppins(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.more_vert,
+                          size: 20.0,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
+                SizedBox(height: 20.0),
+                Stack(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(3),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                                color: Theme.of(context).colorScheme.secondary,
+                                width: 3),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: NetworkImage(
+                                      "https://raw.githubusercontent.com/Rea2er/flutter-house-rent/main/assets/images/avatar.jpeg")),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10.0),
                 Text(
-                  "Jenny Wilson",
+                  "@Nati G",
                   style: GoogleFonts.poppins(
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 25.0,
                   ),
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.more_horiz,
-                    size: 30.0,
+                SizedBox(height: 10.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(width: 5.0),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "29",
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 10.0.sp,
+                          ),
+                        ),
+                        SizedBox(height: 10.0),
+                        Text(
+                          "Following",
+                          style: GoogleFonts.poppins(
+                              fontSize: 10.0, fontWeight: FontWeight.w300),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 2.h,
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "121.9k",
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 10.0.sp,
+                          ),
+                        ),
+                        SizedBox(height: 10.0),
+                        Text(
+                          "Followers",
+                          style: GoogleFonts.poppins(
+                              fontSize: 10.0.sp, fontWeight: FontWeight.w300),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 2.h),
+                    Column(
+                      children: [
+                        Text(
+                          "7.5M",
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 10.0.sp,
+                          ),
+                        ),
+                        Image.asset(
+                          "assets/image/laughing2.gif",
+                          height: 5.h,
+                          width: 10.w,
+                          fit: BoxFit.cover,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Follow",
+                          style: GoogleFonts.poppins(fontSize: 18.0),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          fixedSize: Size(100.0, 45.0),
+                          primary: Colors.amber,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 15.0),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
-          SizedBox(height: 70.0),
-          CircleAvatar(
-            backgroundImage: NetworkImage(
-                "https://raw.githubusercontent.com/Rea2er/flutter-house-rent/main/assets/images/avatar.jpeg"),
-            radius: 40.0,
-          ),
-          SizedBox(height: 20.0),
-          Text(
-            "@Nati G",
-            style: GoogleFonts.poppins(
-              fontWeight: FontWeight.w800,
-              fontSize: 30.0,
-            ),
-          ),
-          SizedBox(height: 30.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SizedBox(width: 20.0),
-              Column(
-                children: [
-                  Text(
-                    "29",
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0,
-                    ),
-                  ),
-                  SizedBox(height: 15.0),
-                  Text(
-                    "Following",
-                    style: GoogleFonts.poppins(
-                        color: Colors.black.withOpacity(0.3),
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w100),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Text(
-                    "121.9k",
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0,
-                    ),
-                  ),
-                  SizedBox(height: 15.0),
-                  Text(
-                    "Followers",
-                    style: GoogleFonts.poppins(
-                        color: Colors.black.withOpacity(0.3),
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w300),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Text(
-                    "7.5M",
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0,
-                    ),
-                  ),
-                  SizedBox(height: 15.0),
-                  Text(
-                    "Like",
-                    style: GoogleFonts.poppins(
-                        color: Colors.black.withOpacity(0.3),
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w300),
-                  ),
-                ],
-              ),
-              SizedBox(width: 20.0),
-            ],
-          ),
-          SizedBox(height: 30.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  "Follow",
-                  style: GoogleFonts.poppins(fontSize: 18.0),
-                ),
-                style: ElevatedButton.styleFrom(
-                  fixedSize: Size(140.0, 55.0),
-                  primary: Colors.green,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                ),
-              ),
-              SizedBox(width: 15.0),
-              OutlinedButton(
-                onPressed: () {},
-                child: Icon(Icons.mail_outline_outlined),
-                style: OutlinedButton.styleFrom(
-                    primary: Colors.black,
-                    backgroundColor: Colors.black12,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
-                    fixedSize: Size(50.0, 60.0)),
-              )
-            ],
-          ),
-          SizedBox(height: 20.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // TabBar(
-              //   isScrollable: true,
-              //   controller: tabController,
-              //   indicator: BoxDecoration(borderRadius: BorderRadius.zero),
-              //   labelColor: Colors.black,
-              //   labelStyle:
-              //       GoogleFonts.poppins(fontSize: 28.0, fontWeight: FontWeight.bold),
-              //   unselectedLabelColor: Colors.black26,
-              //   onTap: (tapIndex) {
-              //     selectedIndex = tapIndex;
-              //   },
-              //   tabs: [
-              //     Tab(text: "Photos"),
-              //     Tab(text: "Video"),
-              //     Tab(text: "Tagged"),
-              //   ],
-              // ),
-              SizedBox(width: 50.0),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.more_vert),
-              )
-            ],
-          ),
-          SizedBox(height: 10.0),
-          Expanded(
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisExtent: 250.0, crossAxisCount: 3),
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
+          Positioned(
+              bottom: 3.h,
+              child: Padding(
+                padding:
+                    const EdgeInsets.only(left: 15.0, right: 15.0, top: 35.0),
+                child: Center(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(20.0),
-                      image: DecorationImage(
-                        image: NetworkImage(listImage[index]),
-                        fit: BoxFit.cover,
-                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Get.isDarkMode
+                              ? Colors.white.withOpacity(0.1)
+                              : Colors.white.withOpacity(0.8),
+                          offset: Offset(-6.0, -6.0),
+                          blurRadius: 10.0,
+                        ),
+                        BoxShadow(
+                          color: Get.isDarkMode
+                              ? Colors.black.withOpacity(0.4)
+                              : Colors.black.withOpacity(0.1),
+                          offset: Offset(6.0, 6.0),
+                          blurRadius: 10.0,
+                        ),
+                      ],
+                      color: Get.isDarkMode
+                          ? Color(0xFF292D32)
+                          : Color(0xFFEFEEEE),
+                      borderRadius: BorderRadius.circular(12.0),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 37.0, right: 37.0, top: 185.0, bottom: 15.0),
-                      child: Container(
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(15.0)),
-                        child: Text("1.234k"),
-                      ),
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          Get.isDarkMode
+                              ? "assets/image/pro2.png"
+                              : "assets/image/pro1.png",
+                          height: 5.h,
+                          width: 10.w,
+                          fit: BoxFit.cover,
+                        ),
+                        RotatedBox(
+                          quarterTurns: 3,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "#Comedian",
+                              style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 25.0.sp,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                );
-              },
-              itemCount: 3,
-            ),
-          )
+                ),
+              ))
         ],
       ),
-    );
+      SizedBox(height: 10.0),
+      Expanded(
+        child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              mainAxisExtent: 250.0, crossAxisCount: 3),
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(20.0),
+                  image: DecorationImage(
+                    image: NetworkImage(listImage[index]),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      left: 37.0, right: 37.0, top: 185.0, bottom: 15.0),
+                  child: Container(
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15.0)),
+                    child: Text("1.234k"),
+                  ),
+                ),
+              ),
+            );
+          },
+          itemCount: 3,
+        ),
+      )
+    ]);
   }
 }
