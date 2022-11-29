@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:laugh1/app/modules/constants/constants.dart';
 import 'package:sizer/sizer.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 import '../controllers/profile_controller.dart';
 
@@ -32,6 +33,10 @@ class ProfileView extends GetView<ProfileController> {
             ),
           ),
           Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30))),
             child: Column(
               children: [
                 Padding(
@@ -89,7 +94,7 @@ class ProfileView extends GetView<ProfileController> {
                               child: CircleAvatar(
                                   radius: 30,
                                   backgroundImage: NetworkImage(
-                                      "https://raw.githubusercontent.com/Rea2er/flutter-house-rent/main/assets/images/avatar.jpeg")),
+                                      "https://scontent.fadd1-1.fna.fbcdn.net/v/t39.30808-6/315111248_1976029435923235_7888811205742473118_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=38iWmPnz2wYAX-FVWWE&_nc_ht=scontent.fadd1-1.fna&oh=00_AfDbe0ZXZAfKoyLi0JxnRs2nvgBNxSKyj09q1rKWn4iNkQ&oe=638A62F4")),
                             ),
                           ),
                         ),
@@ -226,34 +231,38 @@ class ProfileView extends GetView<ProfileController> {
                           : Color(0xFFEFEEEE),
                       borderRadius: BorderRadius.circular(12.0),
                     ),
-                    child: Column(
+                    child: Stack(
                       children: [
-                        Image.asset(
-                          Get.isDarkMode
-                              ? "assets/image/pro2.png"
-                              : "assets/image/pro1.png",
-                          height: 5.h,
-                          width: 10.w,
-                          fit: BoxFit.cover,
-                        ),
-                        RotatedBox(
-                          quarterTurns: 3,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "#Comedian",
-                              style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 25.0.sp,
+                        Column(
+                          children: [
+                            Image.asset(
+                              Get.isDarkMode
+                                  ? "assets/image/pro2.png"
+                                  : "assets/image/pro1.png",
+                              height: 5.h,
+                              width: 10.w,
+                              fit: BoxFit.cover,
+                            ),
+                            RotatedBox(
+                              quarterTurns: 3,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  "#Comedian",
+                                  style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 25.0.sp,
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
+                          ],
                         ),
                       ],
                     ),
                   ),
                 ),
-              ))
+              )),
         ],
       ),
       SizedBox(height: 10.0),
