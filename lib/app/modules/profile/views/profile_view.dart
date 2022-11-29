@@ -51,9 +51,10 @@ class ProfileView extends GetView<ProfileController> {
                         ),
                       ),
                       Text(
-                        "Jenny Wilson",
+                        "Natnael Gebreslasie",
+                        overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.poppins(
-                          fontSize: 20.0,
+                          fontSize: 15.0.sp,
                           fontWeight: FontWeight.w900,
                         ),
                       ),
