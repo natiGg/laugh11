@@ -300,7 +300,7 @@ class _ProfileViewState extends State<ProfileView>
         padding: const EdgeInsets.all(8.0),
         child: Container(
           decoration: BoxDecoration(
-              color: Colors.amber[300],
+              color: Colors.amber[300]!,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(15), topRight: Radius.circular(15))),
           child: Row(

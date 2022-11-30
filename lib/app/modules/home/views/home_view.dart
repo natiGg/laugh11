@@ -79,7 +79,7 @@ class HomeView extends GetView<HomeController> {
         duration: Duration(milliseconds: 200),
       ),
       navBarStyle:
-          NavBarStyle.style13, // Choose the nav bar style with this property.
+          NavBarStyle.style9, // Choose the nav bar style with this property.
     );
     ;
   }
@@ -132,20 +132,20 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
     PersistentBottomNavBarItem(
       contentPadding: 5,
       icon: Icon(FontAwesomeIcons.smile),
-      title: ("Home"),
+      title: ("Jokes"),
       activeColorPrimary: Colors.amber,
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),
     PersistentBottomNavBarItem(
       contentPadding: 2,
       icon: Icon(FontAwesomeIcons.home),
-      title: ("Settings"),
+      title: ("Home"),
       activeColorPrimary: Colors.amber,
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),
     PersistentBottomNavBarItem(
       icon: Icon(CupertinoIcons.profile_circled),
-      title: ("Settings"),
+      title: ("profile"),
       activeColorPrimary: Colors.amber,
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),
