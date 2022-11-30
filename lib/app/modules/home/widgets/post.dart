@@ -29,6 +29,7 @@ class _PostState extends State<Post> with SingleTickerProviderStateMixin {
   @override
   bool get wantKeepAlive => true;
   final initialController = Get.find<HomeController>();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -38,7 +39,7 @@ class _PostState extends State<Post> with SingleTickerProviderStateMixin {
           Stack(
             children: [
               Container(
-                height: 70.0.h,
+                height: 55.0.h,
                 width: double.infinity.h,
                 padding: EdgeInsets.all(15.0),
                 decoration: BoxDecoration(

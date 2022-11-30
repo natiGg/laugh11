@@ -7,9 +7,16 @@ import 'package:laugh1/app/modules/constants/constants.dart';
 import 'package:sizer/sizer.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
+import '../../home/widgets/post.dart';
 import '../controllers/profile_controller.dart';
 
-class ProfileView extends GetView<ProfileController> {
+class ProfileView extends StatefulWidget {
+  @override
+  State<ProfileView> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView>
+    with TickerProviderStateMixin {
   int selectedIndex = 0;
 
   var listImage = [
@@ -18,13 +25,21 @@ class ProfileView extends GetView<ProfileController> {
     "https://raw.githubusercontent.com/Rea2er/flutter-house-rent/main/assets/images/offer03.jpeg"
   ];
 
+  TabController? tabController;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    tabController = TabController(length: 3, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(children: [
       Stack(
         children: [
           Opacity(
-            opacity: 0.05,
+            opacity: 0.1,
             child: Container(
               child: Image.asset(
                 "assets/image/laugh_bg.jpg",
@@ -48,14 +63,6 @@ class ProfileView extends GetView<ProfileController> {
                             Icons.arrow_back_ios,
                             size: 20.0,
                           ),
-                        ),
-                      ),
-                      Text(
-                        "Natnael Gebreslasie",
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.poppins(
-                          fontSize: 15.0.sp,
-                          fontWeight: FontWeight.w900,
                         ),
                       ),
                       IconButton(
@@ -206,6 +213,7 @@ class ProfileView extends GetView<ProfileController> {
                     const EdgeInsets.only(left: 15.0, right: 15.0, top: 35.0),
                 child: Center(
                   child: Container(
+                    width: 12.w,
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
@@ -238,7 +246,7 @@ class ProfileView extends GetView<ProfileController> {
                               direction: Axis.vertical,
                               totalSteps: 200,
                               currentStep: 65,
-                              size: 61,
+                              size: 42,
                               padding: 0,
                               unselectedColor: Colors.amber,
                               selectedColor: Colors.transparent,
@@ -273,7 +281,7 @@ class ProfileView extends GetView<ProfileController> {
                                     "#Comedian",
                                     style: GoogleFonts.poppins(
                                       fontWeight: FontWeight.w800,
-                                      fontSize: 25.0.sp,
+                                      fontSize: 17.0.sp,
                                     ),
                                   ),
                                 ),
@@ -288,39 +296,77 @@ class ProfileView extends GetView<ProfileController> {
               )),
         ],
       ),
-      SizedBox(height: 10.0),
-      Expanded(
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              mainAxisExtent: 250.0, crossAxisCount: 3),
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(20.0),
-                  image: DecorationImage(
-                    image: NetworkImage(listImage[index]),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 37.0, right: 37.0, top: 185.0, bottom: 15.0),
-                  child: Container(
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15.0)),
-                    child: Text("1.234k"),
-                  ),
-                ),
+      Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          decoration: BoxDecoration(
+              color: Colors.amber[300],
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15), topRight: Radius.circular(15))),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TabBar(
+                isScrollable: true,
+                controller: tabController,
+                indicator: BoxDecoration(borderRadius: BorderRadius.zero),
+                labelColor: Colors.black,
+                unselectedLabelColor: Colors.black26,
+                labelStyle: GoogleFonts.poppins(
+                    fontSize: 12.0.sp, fontWeight: FontWeight.bold),
+                onTap: (tapIndex) {
+                  selectedIndex = tapIndex;
+                },
+                tabs: [
+                  Tab(text: "#Jokes"),
+                  Tab(text: "#Roasts"),
+                  Tab(text: "#Challenge"),
+                ],
               ),
-            );
-          },
-          itemCount: 3,
+            ],
+          ),
         ),
+      ),
+      SizedBox(height: 2.0),
+      Expanded(
+        child: TabBarView(controller: tabController, children: [
+          ListView.builder(
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Post(
+                  image: listImage[index],
+                  caption:
+                      "'This official website features a ribbed knit zipper jacket that is modern and stylish. It looks very temparament and is recommended to friends',",
+                  level: "#Pro",
+                ),
+              );
+            },
+            itemCount: 3,
+          ),
+          ListView.builder(
+            itemBuilder: (context, index) {
+              return Post(
+                image: listImage[index],
+                caption:
+                    "'This official website features a ribbed knit zipper jacket that is modern and stylish. It looks very temparament and is recommended to friends',",
+                level: "#Pro",
+              );
+            },
+            itemCount: 3,
+          ),
+          ListView.builder(
+            itemBuilder: (context, index) {
+              return Post(
+                image: listImage[index],
+                caption:
+                    "'This official website features a ribbed knit zipper jacket that is modern and stylish. It looks very temparament and is recommended to friends',",
+                level: "#Pro",
+              );
+            },
+            itemCount: 3,
+          ),
+        ]),
       )
     ]);
   }

@@ -19,11 +19,8 @@ class ShimerPost extends GetView<HomeController> {
         borderRadius: BorderRadius.circular(15.0),
         elevation: 3.0,
         child: Container(
-          height: 70.h,
-          decoration: BoxDecoration(
-              color: Get.isDarkMode
-                  ? Theme.of(context).colorScheme.secondary
-                  : Theme.of(context).colorScheme.primary),
+          height: 55.h,
+          decoration: BoxDecoration(),
           width: double.infinity,
           child: Expanded(
             child: Shimmer.fromColors(
@@ -47,7 +44,7 @@ class ShimerPost extends GetView<HomeController> {
                               ),
                               Container(
                                   width: 20.0.h,
-                                  height: 4.0.h,
+                                  height: 2.0.h,
                                   decoration: BoxDecoration(
                                       color: Get.isDarkMode
                                           ? Theme.of(context)
@@ -60,7 +57,7 @@ class ShimerPost extends GetView<HomeController> {
                             ],
                           ),
                           SizedBox(
-                            height: 5,
+                            height: 4,
                           ),
                           Container(
                             height: 1.0,

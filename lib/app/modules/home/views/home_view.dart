@@ -78,8 +78,8 @@ class HomeView extends GetView<HomeController> {
         curve: Curves.ease,
         duration: Duration(milliseconds: 200),
       ),
-      navBarStyle: NavBarStyle
-          .neumorphic, // Choose the nav bar style with this property.
+      navBarStyle:
+          NavBarStyle.style13, // Choose the nav bar style with this property.
     );
     ;
   }
@@ -98,16 +98,18 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: ListView(children: [
         CustomAppBar(),
-        ...items.map(((e) => Post(
-              image: e <= 3
-                  ? "https://raw.githubusercontent.com/Rea2er/flutter-house-rent/main/assets/images/offer0${e}.jpeg"
-                  : e >= 3
-                      ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd9jewoY_dvLWkuX_TnUgVgFrkjhseQ2S0NZmrzlWKfCNo6JX-YNT2ZvoKwSsvGohgDLU&usqp=CAU"
-                      : "https://www.rd.com/wp-content/uploads/2018/09/69-Short-Jokes-Anyone-Can-Remember-nicole-fornabaio-rd.com_.jpg?fit=700,467",
-              caption:
-                  "'This official website features a ribbed knit zipper jacket that is modern and stylish. It looks very temparament and is recommended to friends',",
-              level: e > 1 ? "#Pro" : "#Comedian",
-            )))
+        ...items.map(((e) => e < 4
+            ? Post(
+                image: e <= 3
+                    ? "https://raw.githubusercontent.com/Rea2er/flutter-house-rent/main/assets/images/offer0${e}.jpeg"
+                    : e >= 3
+                        ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd9jewoY_dvLWkuX_TnUgVgFrkjhseQ2S0NZmrzlWKfCNo6JX-YNT2ZvoKwSsvGohgDLU&usqp=CAU"
+                        : "https://www.rd.com/wp-content/uploads/2018/09/69-Short-Jokes-Anyone-Can-Remember-nicole-fornabaio-rd.com_.jpg?fit=700,467",
+                caption:
+                    "'This official website features a ribbed knit zipper jacket that is modern and stylish. It looks very temparament and is recommended to friends',",
+                level: e > 1 ? "#Pro" : "#Comedian",
+              )
+            : ShimerPost()))
       ]),
     );
   }
@@ -128,12 +130,14 @@ List<Widget> _buildScreens(List items) {
 List<PersistentBottomNavBarItem> _navBarsItems() {
   return [
     PersistentBottomNavBarItem(
+      contentPadding: 5,
       icon: Icon(FontAwesomeIcons.smile),
       title: ("Home"),
       activeColorPrimary: Colors.amber,
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),
     PersistentBottomNavBarItem(
+      contentPadding: 2,
       icon: Icon(FontAwesomeIcons.home),
       title: ("Settings"),
       activeColorPrimary: Colors.amber,
