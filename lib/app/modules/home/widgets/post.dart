@@ -80,11 +80,6 @@ class _PostState extends State<Post> with SingleTickerProviderStateMixin {
                       image: widget.image,
                     ),
                     SizedBox(height: 15.0),
-                    // ReadMoreText(
-                    //   widget.caption,
-                    //   style: GoogleFonts.montserrat(
-                    //       fontSize: 12.0, color: Colors.grey),
-                    // ),
                     ReadMoreText(
                       widget.caption,
                       trimLines: 2,
