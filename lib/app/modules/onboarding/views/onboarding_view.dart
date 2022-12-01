@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../constants/constants.dart';
 import '../controllers/onboarding_controller.dart';
@@ -30,32 +31,34 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     Get.toNamed("/sign-up-social");
   }
 
-  Widget _buildImage(String assetName, [double width = 350]) {
-    return SvgPicture.asset('assets/image/$assetName', width: width);
+  Widget _buildImage(String assetName, [double width = 250]) {
+    return Image.asset('assets/image/$assetName', width: width);
   }
 
   @override
   Widget build(BuildContext context) {
     const bodyStyle = TextStyle(fontSize: 19.0, color: primaryColor);
 
-    const pageDecoration = const PageDecoration(
-      titleTextStyle: TextStyle(
-          fontSize: 28.0, fontWeight: FontWeight.w700, color: primaryColor),
+    final pageDecoration = PageDecoration(
+      titleTextStyle: GoogleFonts.poppins(
+        fontSize: 28.0.sp,
+        fontWeight: FontWeight.w700,
+      ),
       bodyTextStyle: bodyStyle,
       bodyPadding: EdgeInsets.fromLTRB(16.0, 15.0, 16.0, 16.0),
-      pageColor: Colors.white,
       imagePadding: EdgeInsets.zero,
     );
 
     return IntroductionScreen(
       key: introKey,
-      globalBackgroundColor: Colors.white,
       globalHeader: Align(
         alignment: Alignment.topRight,
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.only(top: 16, right: 16),
-            child: _buildImage('flutter.png', 100),
+            child: Text(
+              "skip",
+            ),
           ),
         ),
       ),
@@ -67,7 +70,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             height: 45,
             onPressed: () => _onIntroEnd(context),
             elevation: 2,
-            color: primaryColor,
+            color: Colors.amber,
             shape: RoundedRectangleBorder(
                 side: BorderSide(color: Colors.black),
                 borderRadius: BorderRadius.circular(50)),
@@ -75,7 +78,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("Get Started",
-                    style: GoogleFonts.montserrat(
+                    style: GoogleFonts.poppins(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
                         fontSize: 15)),
@@ -84,23 +87,20 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       ),
       pages: [
         PageViewModel(
-          title: "Start your course",
-          body:
-              "Instead of having to buy an entire share, invest any amount you want.",
+          title: "Laugh all day",
+          body: "",
           image: _buildImage('laughing.gif'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Learn as you go",
-          body:
-              "Download the Stockpile app and master the market with our mini-lesson.",
+          title: "Find out jokes",
+          body: "",
           image: _buildImage('laughing2.gif'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "become a top driver",
-          body:
-              "Kids and teens can track their stocks 24/7 and place trades that you approve.",
+          title: "Discover the most unfunny jokes ",
+          body: "",
           image: _buildImage('notfunny.png'),
           decoration: pageDecoration,
         ),
@@ -122,16 +122,15 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           ? const EdgeInsets.all(12.0)
           : const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
 
-      dotsDecorator: const DotsDecorator(
+      dotsDecorator: DotsDecorator(
         size: Size(10.0, 10.0),
-        activeColor: Color(0xFF001131),
+        activeColor: Get.isDarkMode ? Colors.white : Colors.black,
         activeSize: Size(10.0, 10.0),
         activeShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(25.0)),
         ),
       ),
       dotsContainerDecorator: const ShapeDecoration(
-        color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
         ),

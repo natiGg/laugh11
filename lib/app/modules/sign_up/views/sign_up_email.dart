@@ -38,7 +38,7 @@ class SignUpEmailView extends GetView<SignUpController> {
             ),
           ),
           Opacity(
-            opacity: 0.15,
+            opacity: 0.5,
             child: Container(
                 child: Image.asset(
               "assets/image/laugh_bg.jpg",
@@ -53,10 +53,13 @@ class SignUpEmailView extends GetView<SignUpController> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    height: 20,
+                  ),
                   Text(
                     "Laugh1",
                     style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600, fontSize: 35),
+                        fontWeight: FontWeight.bold, fontSize: 35),
                   ),
                   SizedBox(
                     height: 20,
@@ -175,18 +178,18 @@ class SignUpEmailView extends GetView<SignUpController> {
               ),
             ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Center(
-                child: Image.asset(
-                  "assets/image/logo.jpg",
-                  height: 100,
-                  width: 100,
-                ),
-              ),
-            ],
-          )
+          // Column(
+          //   mainAxisAlignment: MainAxisAlignment.end,
+          //   children: [
+          //     Center(
+          //       child: Image.asset(
+          //         "assets/image/logo.jpg",
+          //         height: 100,
+          //         width: 100,
+          //       ),
+          //     ),
+          //   ],
+          // )
         ],
       ),
     );

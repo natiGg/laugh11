@@ -135,7 +135,7 @@ class _ProfileViewState extends State<ProfileView>
                           Text(
                             "Following",
                             style: GoogleFonts.poppins(
-                                fontSize: 10.0, fontWeight: FontWeight.w300),
+                                fontSize: 10.0.sp, fontWeight: FontWeight.w300),
                           ),
                         ],
                       ),
@@ -171,8 +171,8 @@ class _ProfileViewState extends State<ProfileView>
                           ),
                           Image.asset(
                             "assets/image/laughing2.gif",
-                            height: 5.h,
-                            width: 10.w,
+                            height: 4.h,
+                            width: 9.w,
                             fit: BoxFit.cover,
                           ),
                         ],
@@ -321,7 +321,7 @@ class _ProfileViewState extends State<ProfileView>
                     selectedIndex = tapIndex;
                   },
                   tabs: [
-                    Tab(text: "#Jokes"),
+                    Tab(text: "#MyJokes"),
                     Tab(text: "#Roasts"),
                     Tab(text: "#Challenge"),
                   ],

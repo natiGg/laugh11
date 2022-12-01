@@ -39,9 +39,9 @@ dev_dependencies:
     sdk: flutter
 
 flutter_native_splash: 
-  image: assets/image/light_mode.png
+  image: assets/image/pro1.png
   color: '#42a5f5'
-  image_dark: assets/image/dark_mode.png
+  image_dark: assets/image/pro2.png
   color_dark: '#000000'
 
 flutter: 
