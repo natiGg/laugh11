@@ -10,6 +10,7 @@ abstract class Routes {
   static const PROFILE = _Paths.PROFILE;
   static const NOTIFICATIONS = _Paths.NOTIFICATIONS;
   static const SIGN_UP = _Paths.SIGN_UP;
+  static const SIGN_UP_EMAIL = _Paths.SIGN_UP_EMAIL;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const PROFILE = '/profile';
   static const NOTIFICATIONS = '/notifications';
   static const SIGN_UP = '/sign-up';
+  static const SIGN_UP_EMAIL = '/sign-up-social';
 }
