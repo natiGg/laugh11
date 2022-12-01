@@ -27,11 +27,11 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
   void _onIntroEnd(context) {
-    Get.toNamed("/home");
+    Get.toNamed("/sign-up-social");
   }
 
   Widget _buildImage(String assetName, [double width = 350]) {
-    return SvgPicture.asset('assets/svg/$assetName', width: width);
+    return SvgPicture.asset('assets/image/$assetName', width: width);
   }
 
   @override
@@ -87,21 +87,21 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           title: "Start your course",
           body:
               "Instead of having to buy an entire share, invest any amount you want.",
-          image: _buildImage('logo_dark.svg'),
+          image: _buildImage('laughing.gif'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "Learn as you go",
           body:
               "Download the Stockpile app and master the market with our mini-lesson.",
-          image: _buildImage('logo_light.svg'),
+          image: _buildImage('laughing2.gif'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: "become a top driver",
           body:
               "Kids and teens can track their stocks 24/7 and place trades that you approve.",
-          image: _buildImage('logo_dark.svg'),
+          image: _buildImage('notfunny.png'),
           decoration: pageDecoration,
         ),
       ],

@@ -13,6 +13,8 @@ import 'package:laugh1/app/modules/sign_up/views/sign_up_view.dart';
 import 'package:laugh1/app/modules/splash/bindings/splash_binding.dart';
 import 'package:laugh1/app/modules/splash/views/splash_view.dart';
 
+import '../modules/sign_up/views/sign_up_email.dart';
+
 part 'app_routes.dart';
 
 class AppPages {
@@ -49,6 +51,11 @@ class AppPages {
     GetPage(
       name: _Paths.SIGN_UP,
       page: () => SignUpView(),
+      binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: _Paths.SIGN_UP_EMAIL,
+      page: () => SignUpEmailView(),
       binding: SignUpBinding(),
     ),
   ];
