@@ -313,7 +313,7 @@ class _ProfileViewState extends State<ProfileView>
                 labelColor: Colors.black,
                 unselectedLabelColor: Colors.black26,
                 labelStyle: GoogleFonts.poppins(
-                    fontSize: 12.0.sp, fontWeight: FontWeight.bold),
+                    fontSize: 13.0.sp, fontWeight: FontWeight.bold),
                 onTap: (tapIndex) {
                   selectedIndex = tapIndex;
                 },
