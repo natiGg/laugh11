@@ -41,6 +41,7 @@ class CustomAppBar extends StatelessWidget {
               children: [
                 Expanded(
                   child: TextField(
+                    autofocus: false,
                     decoration: InputDecoration(
                         filled: true,
                         fillColor: Theme.of(context).colorScheme.secondary,

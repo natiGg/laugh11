@@ -8,6 +8,8 @@ import 'package:laugh1/app/modules/onboarding/bindings/onboarding_binding.dart';
 import 'package:laugh1/app/modules/onboarding/views/onboarding_view.dart';
 import 'package:laugh1/app/modules/profile/bindings/profile_binding.dart';
 import 'package:laugh1/app/modules/profile/views/profile_view.dart';
+import 'package:laugh1/app/modules/roast/bindings/roast_binding.dart';
+import 'package:laugh1/app/modules/roast/views/roast_view.dart';
 import 'package:laugh1/app/modules/sign_up/bindings/sign_up_binding.dart';
 import 'package:laugh1/app/modules/sign_up/views/sign_up_view.dart';
 import 'package:laugh1/app/modules/splash/bindings/splash_binding.dart';
@@ -57,6 +59,11 @@ class AppPages {
       name: _Paths.SIGN_UP_EMAIL,
       page: () => SignUpEmailView(),
       binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: _Paths.ROAST,
+      page: () => RoastView(),
+      binding: RoastBinding(),
     ),
   ];
 }

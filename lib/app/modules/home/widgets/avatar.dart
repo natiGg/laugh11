@@ -76,4 +76,10 @@ class _AvatarState extends State<Avatar>
       ),
     );
   }
+
+  @override
+  void dispose(){
+    controller.dispose();
+    super.dispose();
+  }
 }

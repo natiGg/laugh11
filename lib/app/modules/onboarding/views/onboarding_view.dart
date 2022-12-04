@@ -46,7 +46,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       ),
       bodyTextStyle: bodyStyle,
       bodyPadding: EdgeInsets.fromLTRB(16.0, 15.0, 16.0, 16.0),
-      imagePadding: EdgeInsets.zero,
+      imagePadding: EdgeInsets.all(10),
     );
 
     return IntroductionScreen(
@@ -89,7 +89,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         PageViewModel(
           title: "Laugh all day",
           body: "",
-          image: _buildImage('laughing.gif'),
+          image: _buildImage('laughing2.gif'),
           decoration: pageDecoration,
         ),
         PageViewModel(

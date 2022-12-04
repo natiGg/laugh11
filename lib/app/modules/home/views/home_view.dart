@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:laugh1/app/modules/home/widgets/bottom_navigation.dart';
 import 'package:laugh1/app/modules/home/widgets/shimmer.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../themes/theme_controller.dart';
 import '../../profile/views/profile_view.dart';
+import '../../roast/views/roast_view.dart';
 import '../controllers/home_controller.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/gif_header.dart';
@@ -19,7 +22,7 @@ class HomeView extends GetView<HomeController> {
   List isSelected = [true, false, false, false];
   List items = [1, 2, 3, 2, 7, 4, 2, 0];
   late PersistentTabController _tabcontroller =
-      PersistentTabController(initialIndex: 0);
+      PersistentTabController(initialIndex: 1);
 
   // RefreshController _refreshController =
   //     RefreshController(initialRefresh: false);
@@ -111,15 +114,35 @@ class HomeScreen extends StatelessWidget {
               )
             : ShimerPost()))
       ]),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Stack(
+          children: [
+            Icon(
+              FontAwesomeIcons.smile,
+              color: Get.isDarkMode
+                  ? Colors.white
+                  : Theme.of(context).colorScheme.primary,
+            ),
+            Positioned(
+                top: 0,
+                child: Icon(
+                  FontAwesomeIcons.add,
+                  color: Get.isDarkMode
+                      ? Colors.white
+                      : Theme.of(context).colorScheme.primary,
+                  size: 10,
+                ))
+          ],
+        ),
+      ),
     );
   }
 }
 
 List<Widget> _buildScreens(List items) {
   return [
-    HomeScreen(
-      items: items,
-    ),
+    RoastView(),
     HomeScreen(
       items: items,
     ),
@@ -132,7 +155,7 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
     PersistentBottomNavBarItem(
       contentPadding: 5,
       icon: Icon(FontAwesomeIcons.smile),
-      title: ("Jokes"),
+      title: ("Roasts"),
       activeColorPrimary: Colors.amber,
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),
