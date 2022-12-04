@@ -12,6 +12,7 @@ abstract class Routes {
   static const SIGN_UP = _Paths.SIGN_UP;
   static const SIGN_UP_EMAIL = _Paths.SIGN_UP_EMAIL;
   static const ROAST = _Paths.ROAST;
+  static const ERROR_PAGES = _Paths.ERROR_PAGES;
 }
 
 abstract class _Paths {
@@ -23,4 +24,5 @@ abstract class _Paths {
   static const SIGN_UP = '/sign-up';
   static const SIGN_UP_EMAIL = '/sign-up-social';
   static const ROAST = '/roast';
+  static const ERROR_PAGES = '/error-pages';
 }

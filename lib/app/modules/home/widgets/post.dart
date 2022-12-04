@@ -84,18 +84,19 @@ class _PostState extends State<Post> with SingleTickerProviderStateMixin {
                     ReadMoreText(
                       widget.caption,
                       trimLines: 2,
-                      colorClickableText: Colors.pink,
+                      colorClickableText: Colors.grey,
                       trimMode: TrimMode.Line,
                       trimCollapsedText: 'Show more',
-                      textAlign: TextAlign.justify,
+                      trimExpandedText: "Hide",
+                      textAlign: TextAlign.start,
 
                       style: GoogleFonts.poppins(
-                          fontSize: 10.sp, fontWeight: FontWeight.w500),
+                          fontSize: 13.sp, fontWeight: FontWeight.bold),
                       // trimExpandedText: 'Show less',
                       moreStyle: GoogleFonts.poppins(
                           fontSize: 13.0,
                           color: Colors.grey,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.w700),
                     ),
                     SizedBox(height: 10.0),
                     Expanded(child: Content(image: widget.image)),

@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:laugh1/app/modules/home/widgets/avatar.dart';
+import 'package:laugh1/app/modules/roast/views/roast_screen_view.dart';
 import 'package:sizer/sizer.dart';
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -237,8 +239,12 @@ class TrendingRoast extends StatelessWidget {
                                   child: IconButton(
                                     iconSize: 20,
                                     alignment: Alignment.center,
-                                    onPressed: (() {}),
-                                    icon: Icon(FontAwesomeIcons.coffee),
+                                    onPressed: (() {
+                                      Get.to(() => RoastScreenView());
+                                    }),
+                                    icon: Hero(
+                                        tag: 1,
+                                        child: Icon(FontAwesomeIcons.coffee)),
                                   ),
                                 ),
                               ),

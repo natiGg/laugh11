@@ -108,8 +108,9 @@ class HomeScreen extends StatelessWidget {
                     : e >= 3
                         ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd9jewoY_dvLWkuX_TnUgVgFrkjhseQ2S0NZmrzlWKfCNo6JX-YNT2ZvoKwSsvGohgDLU&usqp=CAU"
                         : "https://www.rd.com/wp-content/uploads/2018/09/69-Short-Jokes-Anyone-Can-Remember-nicole-fornabaio-rd.com_.jpg?fit=700,467",
-                caption:
-                    "'This official website features a ribbed knit zipper jacket that is modern and stylish. It looks very temparament and is recommended to friends',",
+                caption: e < 2
+                    ? "'This official website features a ribbed knit zipper jacket that is modern and stylish. It looks very temparament and is recommended to friends',"
+                    : "አንዱ የዋህ በዝናብ ሲጓዝ አዳልጦት ይወድቃል። ወድቆ እያለ ብልጭ  ይላል ፤ ይኼኔ ምነው ፈጣሪ ሳልዘጋጅ ፎቶ አነሳኸኝ አለ ይባላል። #Dark #Jokes ",
                 level: e > 1 ? "#Pro" : "#Comedian",
               )
             : ShimerPost()))
