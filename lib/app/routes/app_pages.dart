@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'package:laugh1/app/modules/error_pages/bindings/error_pages_binding.dart';
 import 'package:laugh1/app/modules/error_pages/views/error_pages_view.dart';

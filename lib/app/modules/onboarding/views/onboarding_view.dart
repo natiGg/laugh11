@@ -5,29 +5,17 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:laugh1/app/themes/theme_controller.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../constants/constants.dart';
 import '../controllers/onboarding_controller.dart';
 
 class OnboardingView extends GetView<OnboardingController> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: OnBoardingPage(),
-    );
-  }
-}
-
-class OnBoardingPage extends StatefulWidget {
-  @override
-  _OnBoardingPageState createState() => _OnBoardingPageState();
-}
-
-class _OnBoardingPageState extends State<OnBoardingPage> {
   final introKey = GlobalKey<IntroductionScreenState>();
-
+  final themeController = Get.find<ThemeController>();
   void _onIntroEnd(context) {
+    themeController.firstTime(true);
     Get.toNamed("/sign-up-social");
   }
 

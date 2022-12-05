@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
 class Reaction extends StatelessWidget {
   const Reaction({Key? key}) : super(key: key);
@@ -15,8 +16,8 @@ class Reaction extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Image.asset(
-                      "assets/image/laughing2.gif",
+                    Lottie.asset(
+                      "assets/lottie/laughing.json",
                       height: 30,
                       width: 30,
                       fit: BoxFit.cover,
