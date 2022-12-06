@@ -44,7 +44,7 @@ class _StartPageState extends State<StartPage> {
   bool connectSuccess = false;
   final Connectivity _connectivity = Connectivity();
   var connectionType = 0;
-  var isConnected = false;
+  var isConnected = true;
   @override
   void initState() {
     // TODO: implement initState
