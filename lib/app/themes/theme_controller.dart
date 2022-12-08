@@ -6,6 +6,7 @@ class ThemeController extends GetxController {
   final _box = GetStorage();
   final _key = 'isDarkMode';
   final _key2 = "isFirstTime";
+
   ThemeMode get theme => _loadTheme() ? ThemeMode.dark : ThemeMode.light;
 
   bool _loadTheme() => _box.read(_key) ?? false;

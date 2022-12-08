@@ -12,23 +12,30 @@ class RoastView extends GetView<RoastController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(children: [
-        CustomAppBar(),
-        SizedBox(
-          height: 2.h,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
-          child: Text(
-            "Upcoming Roasts",
-            style: GoogleFonts.poppins(
-              fontWeight: FontWeight.bold,
-              fontSize: 15.sp,
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [CustomAppBar()],
+        body: ListView(children: [
+          SizedBox(
+            height: 2.h,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            child: Text(
+              "Upcoming Roasts",
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.bold,
+                fontSize: 15.sp,
+              ),
             ),
           ),
-        ),
-        TrendingRoast()
-      ]),
+          TrendingRoast(),
+          TrendingRoast(),
+          TrendingRoast(),
+          TrendingRoast(),
+          TrendingRoast(),
+          TrendingRoast(),
+        ]),
+      ),
     );
   }
 }

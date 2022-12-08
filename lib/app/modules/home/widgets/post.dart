@@ -88,10 +88,10 @@ class _PostState extends State<Post> with SingleTickerProviderStateMixin {
                       trimMode: TrimMode.Line,
                       trimCollapsedText: 'Show more',
                       trimExpandedText: "Hide",
-                      textAlign: TextAlign.start,
+                      textAlign: TextAlign.justify,
 
                       style: GoogleFonts.poppins(
-                          fontSize: 13.sp, fontWeight: FontWeight.bold),
+                          fontSize: 10.sp, fontWeight: FontWeight.w600),
                       // trimExpandedText: 'Show less',
                       moreStyle: GoogleFonts.poppins(
                           fontSize: 13.0,

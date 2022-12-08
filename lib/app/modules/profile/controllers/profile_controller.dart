@@ -4,6 +4,8 @@ class ProfileController extends GetxController {
   //TODO: Implement ProfileController
 
   final count = 0.obs;
+  RxString _selectedMenu = ''.obs;
+
   @override
   void onInit() {
     super.onInit();

@@ -4,8 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:laugh1/app/modules/constants/constants.dart';
 import 'package:laugh1/app/modules/home/widgets/bottom_navigation.dart';
 import 'package:laugh1/app/modules/home/widgets/shimmer.dart';
+import 'package:laugh1/app/modules/sign_up/widgets/loading.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:sizer/sizer.dart';
 
@@ -24,36 +26,12 @@ class HomeView extends GetView<HomeController> {
   late PersistentTabController _tabcontroller =
       PersistentTabController(initialIndex: 1);
 
-  // RefreshController _refreshController =
-  //     RefreshController(initialRefresh: false);
-  // bool _show = false;
-  // RxBool _isRefreshed = false.obs;
-
-  // void _onRefresh() async {
-  //   _isRefreshed.value = !_isRefreshed.value;
-
-  //   // monitor network fetch
-  //   await Future.delayed(Duration(milliseconds: 1000));
-  //   // if failed,use refreshFailed()
-  //   _refreshController.refreshCompleted();
-
-  //   _isRefreshed.value = !_isRefreshed.value;
-  // }
-
-  // void _onLoading() async {
-  //   // monitor network fetch
-  //   await Future.delayed(Duration(milliseconds: 1000));
-  //   // if failed,use loadFailed(),if no data return,use LoadNodata()
-
-  //   _refreshController.loadComplete();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
       context,
       controller: _tabcontroller,
-      screens: _buildScreens(items),
+      screens: _buildScreens(items, controller),
       items: _navBarsItems(),
       confineInSafeArea: true,
       backgroundColor:
@@ -88,63 +66,120 @@ class HomeView extends GetView<HomeController> {
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({
     Key? key,
+    required this.controller,
     required this.items,
   }) : super(key: key);
 
   final List items;
+  final HomeController controller;
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
   Widget build(BuildContext context) {
+    RefreshController _refreshController =
+        RefreshController(initialRefresh: false);
+
+    bool _show = false;
+    RxBool _isRefreshed = false.obs;
+
+    void _onRefresh() async {
+      // monitor network fetch
+      await Future.delayed(Duration(milliseconds: 1000));
+      // if failed,use refreshFailed()
+      _refreshController.refreshCompleted();
+    }
+
+    void _onLoading() async {
+      // monitor network fetch
+      await Future.delayed(Duration(milliseconds: 1000));
+      // if failed,use loadFailed(),if no data return,use LoadNodata()
+
+      if (mounted) setState(() {});
+      _refreshController.loadComplete();
+    }
+
     return Scaffold(
-      body: ListView(children: [
-        CustomAppBar(),
-        ...items.map(((e) => e < 4
-            ? Post(
-                image: e <= 3
-                    ? "https://raw.githubusercontent.com/Rea2er/flutter-house-rent/main/assets/images/offer0${e}.jpeg"
-                    : e >= 3
-                        ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd9jewoY_dvLWkuX_TnUgVgFrkjhseQ2S0NZmrzlWKfCNo6JX-YNT2ZvoKwSsvGohgDLU&usqp=CAU"
-                        : "https://www.rd.com/wp-content/uploads/2018/09/69-Short-Jokes-Anyone-Can-Remember-nicole-fornabaio-rd.com_.jpg?fit=700,467",
-                caption: e < 2
-                    ? "'This official website features a ribbed knit zipper jacket that is modern and stylish. It looks very temparament and is recommended to friends',"
-                    : "አንዱ የዋህ በዝናብ ሲጓዝ አዳልጦት ይወድቃል። ወድቆ እያለ ብልጭ  ይላል ፤ ይኼኔ ምነው ፈጣሪ ሳልዘጋጅ ፎቶ አነሳኸኝ አለ ይባላል። #Dark #Jokes ",
-                level: e > 1 ? "#Pro" : "#Comedian",
-              )
-            : ShimerPost()))
-      ]),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Stack(
-          children: [
-            Icon(
-              FontAwesomeIcons.smile,
-              color: Get.isDarkMode
-                  ? Colors.white
-                  : Theme.of(context).colorScheme.primary,
-            ),
-            Positioned(
-                top: 0,
-                child: Icon(
-                  FontAwesomeIcons.add,
-                  color: Get.isDarkMode
-                      ? Colors.white
-                      : Theme.of(context).colorScheme.primary,
-                  size: 10,
-                ))
-          ],
-        ),
-      ),
-    );
+        body: NestedScrollView(
+            headerSliverBuilder: (context, bool innerBoxIsScrolled) {
+              return <Widget>[CustomAppBar()];
+            },
+            body: SmartRefresher(
+              enablePullDown: true,
+              enablePullUp: true,
+              header: GifHeader1(),
+              controller: _refreshController,
+              onRefresh: _onRefresh,
+              onLoading: _onLoading,
+              footer: ClassicFooter(),
+              child: ListView(children: [
+                ...widget.items.map(((e) => e < 4
+                    ? Post(
+                        image: e <= 3
+                            ? "https://raw.githubusercontent.com/Rea2er/flutter-house-rent/main/assets/images/offer0${e}.jpeg"
+                            : e >= 3
+                                ? "https://image.winudf.com/v2/image/dG9wLmFtaGFyaWMuZnVubnkuam9rZXNfc2NyZWVuXzBfMjVxYXEwYXM/screen-0.jpg?fakeurl=1&type=.webp"
+                                : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpcwEezaLwxdB0Nt2Bk9BCJFsaq22Z8eeKiPK6-cXsjk6meMcyS9CJSA9vv7LOIrSqZE8&usqp=CAU",
+                        caption: e < 2
+                            ? "'This official website features a ribbed knit zipper jacket that is modern and stylish. It looks very temparament and is recommended to friends',"
+                            : "አንዱ የዋህ በዝናብ ሲጓዝ አዳልጦት ይወድቃል። ወድቆ እያለ ብልጭ  ይላል ፤ ይኼኔ ምነው ፈጣሪ ሳልዘጋጅ ፎቶ አነሳኸኝ አለ ይባላል። #Dark #Jokes ",
+                        level: e > 1 ? "#Pro" : "#Comedian",
+                      )
+                    : ShimerPost()))
+              ]),
+            )),
+        floatingActionButton: InkWell(
+            onTap: () {
+              widget.controller.tapped.value = !widget.controller.tapped.value;
+            },
+            child: Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                  // border: Border.all(color: primaryColor),
+                  color: primaryColor,
+                  borderRadius: BorderRadius.circular(40)),
+              child: Obx((() => !widget.controller.tapped.isFalse
+                  ? Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Image.asset(
+                            "assets/image/jokes2.jpg",
+                            height: 25,
+                            width: 25,
+                            fit: BoxFit.cover,
+                          ),
+                          Text("Make a\njoke",
+                              textAlign: TextAlign.justify,
+                              style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: 10.0,
+                                  fontWeight: FontWeight.bold)),
+                        ])
+                  : Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: LoadingDefault(),
+                      ),
+                    ))),
+            )));
   }
 }
 
-List<Widget> _buildScreens(List items) {
+List<Widget> _buildScreens(List items, HomeController controller) {
   return [
     RoastView(),
     HomeScreen(
+      controller: controller,
       items: items,
     ),
     ProfileView(),

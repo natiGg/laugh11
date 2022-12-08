@@ -30,6 +30,8 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   step_progress_indicator: 1.0.2
   smooth_page_indicator: ^1.0.0+2
+  loading_animation_widget: ^1.2.0+3
+  flutter_gifimage: ^1.0.0
   flutter: 
     sdk: flutter
 
@@ -41,9 +43,9 @@ dev_dependencies:
 
 flutter_native_splash: 
   image: assets/image/light_mode.png
-  color: '#42a5f5'
+  color: '#ffffff'
   image_dark: assets/image/dark_mode.png
-  color_dark: '#42a5f5'
+  color_dark: '#212121'
   android_12: 
     image: assets/image/light_mode.png
     image_dark: assets/image/dark_mode.png
