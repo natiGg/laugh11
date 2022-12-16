@@ -32,8 +32,9 @@ class _makeInputState extends State<makeInput> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
+          height: 50,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(15),
               color: Colors.white,
               boxShadow: [
                 BoxShadow(
@@ -53,7 +54,7 @@ class _makeInputState extends State<makeInput> {
                             fontWeight: FontWeight.w300,
                             fontSize: 15),
                         contentPadding:
-                            EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
                         enabledBorder: InputBorder.none,
@@ -62,7 +63,7 @@ class _makeInputState extends State<makeInput> {
                         suffixIcon: !widget.obscuretext
                             ? Icon(
                                 FontAwesomeIcons.message,
-                                size: 20,
+                                size: 15,
                               )
                             : IconButton(
                                 onPressed: () {
@@ -74,7 +75,7 @@ class _makeInputState extends State<makeInput> {
                                   _hiddenP
                                       ? Icons.visibility_off
                                       : Icons.visibility,
-                                  size: 20,
+                                  size: 10,
                                 ),
                               )),
                     validator: (validator) {}),
@@ -94,27 +95,30 @@ class Button2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 3, right: 3),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(50),
-      ),
-      child: MaterialButton(
-          minWidth: double.infinity,
-          height: 50,
-          onPressed: () async {
-            if (type == 'Login') {
-              Get.toNamed("main");
-            }
-          },
-          elevation: 2,
-          color: Colors.black,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-          child: Text(type,
-              style: GoogleFonts.poppins(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20))),
-    );
+        padding: EdgeInsets.only(bottom: 3, right: 3),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50),
+        ),
+        child: ElevatedButton(
+          onPressed: () {},
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 10,
+              ),
+              Text("Login",
+                  style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w600, fontSize: 15)),
+            ],
+          ),
+          style: ElevatedButton.styleFrom(
+            fixedSize: Size(double.infinity, 45.0),
+            primary: Colors.amber,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+          ),
+        ));
   }
 }

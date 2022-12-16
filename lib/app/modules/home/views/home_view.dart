@@ -28,53 +28,86 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return PersistentTabView(
-      context,
-      controller: _tabcontroller,
-      screens: _buildScreens(items, controller),
-      items: _navBarsItems(),
-      confineInSafeArea: true,
-      backgroundColor:
-          Theme.of(context).colorScheme.secondary, // Default is Colors.white.
-      handleAndroidBackButtonPress: true, // Default is true.
-      resizeToAvoidBottomInset:
-          true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
-      stateManagement: true, // Default is true.
-      hideNavigationBarWhenKeyboardShows:
-          true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
-      decoration: NavBarDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        colorBehindNavBar: Theme.of(context).colorScheme.secondary,
-      ),
-      popAllScreensOnTapOfSelectedTab: true,
-      popActionScreens: PopActionScreensType.all,
-      itemAnimationProperties: ItemAnimationProperties(
-        // Navigation Bar's items animation properties.
-        duration: Duration(milliseconds: 200),
-        curve: Curves.ease,
-      ),
-      screenTransitionAnimation: ScreenTransitionAnimation(
-        // Screen transition animation on change of selected tab.
-        animateTabTransition: true,
-        curve: Curves.ease,
-        duration: Duration(milliseconds: 200),
-      ),
-      navBarStyle:
-          NavBarStyle.style9, // Choose the nav bar style with this property.
-    );
-    ;
+    return PersistentTabView(context,
+        controller: _tabcontroller,
+        screens: _buildScreens(items, controller),
+        items: _navBarsItems(),
+        confineInSafeArea: true,
+        backgroundColor:
+            Theme.of(context).colorScheme.secondary, // Default is Colors.white.
+        handleAndroidBackButtonPress: true, // Default is true.
+        resizeToAvoidBottomInset:
+            true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
+        stateManagement: true, // Default is true.
+        hideNavigationBarWhenKeyboardShows:
+            true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+        decoration: NavBarDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+          colorBehindNavBar: Theme.of(context).colorScheme.secondary,
+        ),
+        popAllScreensOnTapOfSelectedTab: true,
+        popActionScreens: PopActionScreensType.all,
+        itemAnimationProperties: ItemAnimationProperties(
+          // Navigation Bar's items animation properties.
+          duration: Duration(milliseconds: 200),
+          curve: Curves.ease,
+        ),
+        screenTransitionAnimation: ScreenTransitionAnimation(
+          // Screen transition animation on change of selected tab.
+          animateTabTransition: true,
+          curve: Curves.ease,
+          duration: Duration(milliseconds: 200),
+        ),
+        navBarStyle: NavBarStyle.style9,
+        floatingActionButton: FloatingActionButton(
+          onPressed: (() {
+            controller.tapped.value = controller.tapped.value;
+          }),
+          child: Container(
+            width: 30,
+            height: 30,
+            decoration: BoxDecoration(
+                // border: Border.all(color: primaryColor),
+                color: primaryColor,
+                borderRadius: BorderRadius.circular(40)),
+            child: Obx((() => controller.tapped.isFalse
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Image.asset(
+                          "assets/image/jokes2.jpg",
+                          height: 25,
+                          width: 25,
+                          fit: BoxFit.cover,
+                        ),
+                        Text("Make a\njoke",
+                            textAlign: TextAlign.justify,
+                            style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontSize: 10.0,
+                                fontWeight: FontWeight.bold)),
+                      ])
+                : Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: LoadingDefault(),
+                    ),
+                  ))),
+          ), // Choose the nav bar style with this property.
+        ));
   }
 }
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
     Key? key,
-    required this.controller,
     required this.items,
   }) : super(key: key);
 
   final List items;
-  final HomeController controller;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -106,72 +139,35 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     return Scaffold(
-        body: NestedScrollView(
-            headerSliverBuilder: (context, bool innerBoxIsScrolled) {
-              return <Widget>[CustomAppBar()];
-            },
-            body: SmartRefresher(
-              enablePullDown: true,
-              enablePullUp: true,
-              header: GifHeader1(),
-              controller: _refreshController,
-              onRefresh: _onRefresh,
-              onLoading: _onLoading,
-              footer: ClassicFooter(),
-              child: ListView(children: [
-                ...widget.items.map(((e) => e < 4
-                    ? Post(
-                        image: e <= 3
-                            ? "https://raw.githubusercontent.com/Rea2er/flutter-house-rent/main/assets/images/offer0${e}.jpeg"
-                            : e >= 3
-                                ? "https://image.winudf.com/v2/image/dG9wLmFtaGFyaWMuZnVubnkuam9rZXNfc2NyZWVuXzBfMjVxYXEwYXM/screen-0.jpg?fakeurl=1&type=.webp"
-                                : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpcwEezaLwxdB0Nt2Bk9BCJFsaq22Z8eeKiPK6-cXsjk6meMcyS9CJSA9vv7LOIrSqZE8&usqp=CAU",
-                        caption: e < 2
-                            ? "'This official website features a ribbed knit zipper jacket that is modern and stylish. It looks very temparament and is recommended to friends',"
-                            : "አንዱ የዋህ በዝናብ ሲጓዝ አዳልጦት ይወድቃል። ወድቆ እያለ ብልጭ  ይላል ፤ ይኼኔ ምነው ፈጣሪ ሳልዘጋጅ ፎቶ አነሳኸኝ አለ ይባላል። #Dark #Jokes ",
-                        level: e > 1 ? "#Pro" : "#Comedian",
-                      )
-                    : ShimerPost()))
-              ]),
-            )),
-        floatingActionButton: InkWell(
-            onTap: () {
-              widget.controller.tapped.value = !widget.controller.tapped.value;
-            },
-            child: Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                  // border: Border.all(color: primaryColor),
-                  color: primaryColor,
-                  borderRadius: BorderRadius.circular(40)),
-              child: Obx((() => !widget.controller.tapped.isFalse
-                  ? Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                          SizedBox(
-                            width: 15,
-                          ),
-                          Image.asset(
-                            "assets/image/jokes2.jpg",
-                            height: 25,
-                            width: 25,
-                            fit: BoxFit.cover,
-                          ),
-                          Text("Make a\njoke",
-                              textAlign: TextAlign.justify,
-                              style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontSize: 10.0,
-                                  fontWeight: FontWeight.bold)),
-                        ])
-                  : Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: LoadingDefault(),
-                      ),
-                    ))),
-            )));
+      body: NestedScrollView(
+          headerSliverBuilder: (context, bool innerBoxIsScrolled) {
+            return <Widget>[CustomAppBar()];
+          },
+          body: SmartRefresher(
+            enablePullDown: true,
+            enablePullUp: true,
+            header: GifHeader1(),
+            controller: _refreshController,
+            onRefresh: _onRefresh,
+            onLoading: _onLoading,
+            footer: ClassicFooter(),
+            child: ListView(children: [
+              ...widget.items.map(((e) => e < 4
+                  ? Post(
+                      image: e <= 3
+                          ? "https://raw.githubusercontent.com/Rea2er/flutter-house-rent/main/assets/images/offer0${e}.jpeg"
+                          : e >= 3
+                              ? "https://image.winudf.com/v2/image/dG9wLmFtaGFyaWMuZnVubnkuam9rZXNfc2NyZWVuXzBfMjVxYXEwYXM/screen-0.jpg?fakeurl=1&type=.webp"
+                              : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpcwEezaLwxdB0Nt2Bk9BCJFsaq22Z8eeKiPK6-cXsjk6meMcyS9CJSA9vv7LOIrSqZE8&usqp=CAU",
+                      caption: e < 2
+                          ? "'This official website features a ribbed knit zipper jacket that is modern and stylish. It looks very temparament and is recommended to friends',"
+                          : "አንዱ የዋህ በዝናብ ሲጓዝ አዳልጦት ይወድቃል። ወድቆ እያለ ብልጭ  ይላል ፤ ይኼኔ ምነው ፈጣሪ ሳልዘጋጅ ፎቶ አነሳኸኝ አለ ይባላል። #Dark #Jokes ",
+                      level: e > 1 ? "#Pro" : "#Comedian",
+                    )
+                  : ShimerPost()))
+            ]),
+          )),
+    );
   }
 }
 
@@ -179,7 +175,6 @@ List<Widget> _buildScreens(List items, HomeController controller) {
   return [
     RoastView(),
     HomeScreen(
-      controller: controller,
       items: items,
     ),
     ProfileView(),
