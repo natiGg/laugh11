@@ -24,10 +24,12 @@ class SignUpController extends GetxController {
     isLoging(true);
     final user = await GoogleSignInApi.login();
 
-    token = await user!.authentication.then((value) {
-      return value.accessToken;
+    token = await user!.authentication.then((googleKey) {
+      return googleKey.idToken;
     });
-    print("lolol" + token);
+
+    print("lolol" + token.toString());
+
     try {
       var params = {
         "auth_token": token,
@@ -42,7 +44,7 @@ class SignUpController extends GetxController {
       );
       print(response);
     } catch (e) {
-      print(e);
+      print(e.toString());
     }
 
     if (user.displayName!.isNotEmpty) {

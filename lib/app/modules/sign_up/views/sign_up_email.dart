@@ -116,90 +116,64 @@ class SignUpEmailView extends GetView<SignUpController> {
                               SizedBox(
                                 height: 3.h,
                               ),
+                              Text("Continue with Social",
+                                  style: GoogleFonts.poppins(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 15)),
                               Padding(
                                 padding: const EdgeInsets.all(10.0),
-                                child: Column(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     ElevatedButton(
                                       onPressed: () {
                                         controller.signInGoogle();
                                       },
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Image.asset("assets/image/google.jpg",
-                                              fit: BoxFit.cover,
-                                              height: 25,
-                                              width: 20),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text("Continue with google",
-                                              style: GoogleFonts.poppins(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 15)),
-                                        ],
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Image.asset(
+                                                "assets/image/google.jpg",
+                                                fit: BoxFit.cover,
+                                                height: 25,
+                                                width: 20),
+                                          ],
+                                        ),
                                       ),
                                       style: ElevatedButton.styleFrom(
                                         fixedSize: Size(double.infinity, 45.0),
-                                        primary: Colors.grey[200],
+                                        primary: Colors.white,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(15.0),
                                         ),
                                       ),
                                     ),
-                                    // MaterialButton(
-                                    //     minWidth: double.infinity,
-                                    //     height: 45,
-                                    //     onPressed: () async {
-                                    //       controller.signInGoogle();
-                                    //     },
-                                    //     elevation: 2,
-                                    //     color: Colors.white,
-                                    //     shape: RoundedRectangleBorder(
-                                    //         borderRadius: BorderRadius.circular(50)),
-                                    //     child: Row(
-                                    //       mainAxisAlignment: MainAxisAlignment.center,
-                                    //       children: [
-                                    //         Image.asset("assets/image/google.jpg",
-                                    //             fit: BoxFit.cover,
-                                    //             height: 25,
-                                    //             width: 20),
-                                    //         SizedBox(
-                                    //           width: 10,
-                                    //         ),
-                                    //         Text("Continue with google",
-                                    //             style: GoogleFonts.poppins(
-                                    //                 color: Colors.black,
-                                    //                 fontWeight: FontWeight.w600,
-                                    //                 fontSize: 15)),
-                                    //       ],
-                                    //     )),
                                     SizedBox(
                                       height: 20,
                                     ),
                                     ElevatedButton(
                                       onPressed: () {},
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Image.asset("assets/image/apple2.png",
-                                              fit: BoxFit.cover,
-                                              height: 20,
-                                              width: 20),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text("Continue with apple",
-                                              style: GoogleFonts.poppins(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 15)),
-                                        ],
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Image.asset(
+                                                "assets/image/apple2.png",
+                                                fit: BoxFit.cover,
+                                                height: 20,
+                                                width: 20),
+                                          ],
+                                        ),
                                       ),
                                       style: ElevatedButton.styleFrom(
                                         fixedSize: Size(double.infinity, 45.0),
@@ -210,56 +184,24 @@ class SignUpEmailView extends GetView<SignUpController> {
                                         ),
                                       ),
                                     ),
-                                    // MaterialButton(
-                                    //     minWidth: double.infinity,
-                                    //     height: 45,
-                                    //     onPressed: () async {
-                                    //       controller.signInGoogle();
-                                    //     },
-                                    //     elevation: 2,
-                                    //     color: Colors.black,
-                                    //     shape: RoundedRectangleBorder(
-                                    //         side: BorderSide(color: Colors.black),
-                                    //         borderRadius: BorderRadius.circular(50)),
-                                    //     child: Row(
-                                    //       mainAxisAlignment: MainAxisAlignment.center,
-                                    //       children: [
-                                    //         Image.asset("assets/image/apple2.png",
-                                    //             fit: BoxFit.cover,
-                                    //             height: 20,
-                                    //             width: 20),
-                                    //         SizedBox(
-                                    //           width: 10,
-                                    //         ),
-                                    //         Text("Continue with apple",
-                                    //             style: GoogleFonts.poppins(
-                                    //                 color: Colors.white,
-                                    //                 fontWeight: FontWeight.w600,
-                                    //                 fontSize: 15)),
-                                    //       ],
-                                    //     )),
                                     SizedBox(
                                       height: 20,
                                     ),
                                     ElevatedButton(
                                       onPressed: () {},
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Image.asset("assets/image/fb.png",
-                                              fit: BoxFit.cover,
-                                              height: 20,
-                                              width: 20),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text("Sign in with facebook",
-                                              style: GoogleFonts.poppins(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 15)),
-                                        ],
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Image.asset("assets/image/fb.png",
+                                                fit: BoxFit.cover,
+                                                height: 20,
+                                                width: 20),
+                                          ],
+                                        ),
                                       ),
                                       style: ElevatedButton.styleFrom(
                                         fixedSize: Size(double.infinity, 45.0),
@@ -269,36 +211,6 @@ class SignUpEmailView extends GetView<SignUpController> {
                                               BorderRadius.circular(15.0),
                                         ),
                                       ),
-                                    ),
-                                    // MaterialButton(
-                                    //     minWidth: double.infinity,
-                                    //     height: 45,
-                                    //     onPressed: () async {
-                                    //       Get.toNamed("/home");
-                                    //     },
-                                    //     elevation: 2,
-                                    //     color: Color(0xFF1877F2),
-                                    //     shape: RoundedRectangleBorder(
-                                    //         borderRadius: BorderRadius.circular(50)),
-                                    //     child: Row(
-                                    //       mainAxisAlignment: MainAxisAlignment.center,
-                                    //       children: [
-                                    //         Image.asset("assets/image/fb.png",
-                                    //             fit: BoxFit.cover,
-                                    //             height: 20,
-                                    //             width: 20),
-                                    //         SizedBox(
-                                    //           width: 10,
-                                    //         ),
-                                    //         Text("Sign in with facebook",
-                                    //             style: GoogleFonts.poppins(
-                                    //                 color: Colors.white,
-                                    //                 fontWeight: FontWeight.w600,
-                                    //                 fontSize: 15)),
-                                    //       ],
-                                    //     )),
-                                    SizedBox(
-                                      height: 20,
                                     ),
                                   ],
                                 ),
